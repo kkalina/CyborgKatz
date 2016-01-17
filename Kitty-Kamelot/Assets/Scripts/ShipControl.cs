@@ -4,6 +4,9 @@ using XInputDotNetPure;
 
 public class ShipControl : MonoBehaviour
 {
+    public AudioSource timeSlow;
+    public AudioSource timeResume;
+
     public int health = 6;
     public bool dead = false;
     public GameObject debris;
@@ -408,14 +411,23 @@ public class ShipControl : MonoBehaviour
         }
     }
 
+    //private bool kittyTimeActive = false;
+
     public IEnumerator KittyTime()
     {
-        // suspend execution for 5 seconds
-        Time.timeScale = .25f;
-        Time.fixedDeltaTime = .005f;
-        yield return new WaitForSeconds(0.3f);
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = .01f;
+        //if (!kittyTimeActive)
+        //{
+            // suspend execution for 5 seconds
+            Time.timeScale = .25f;
+            Time.fixedDeltaTime = .005f;
+            //timeSlow.Play();
+            //kittyTimeActive = true;
+            yield return new WaitForSeconds(0.3f);
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = .01f;
+            //timeResume.Play();
+            //kittyTimeActive = false;
+        //}
     }
 
     void die()

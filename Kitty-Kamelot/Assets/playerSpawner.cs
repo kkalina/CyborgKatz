@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class playerSpawner : MonoBehaviour {
+
+    public GameObject Boss;
+
     public bool p1active = false;
     public bool p2active = false;
     public bool p3active = false;
@@ -77,10 +80,16 @@ public class playerSpawner : MonoBehaviour {
 
         if((!(p1active || p2active || p3active || p4active))&&(!gameOver))
         {
-            //Game Over
+            //Game Over, loss
             gameOver = true;
             gameOverTime = Time.time + gameOverDelay;
             //Application.LoadLevel("CharacterSelect");
+        }
+        if((Boss == null) && (!gameOver))
+        {
+            //Game Over, win
+            gameOver = true;
+            gameOverTime = Time.time + gameOverDelay;
         }
 
         if (gameOver && (Time.time > gameOverTime))
