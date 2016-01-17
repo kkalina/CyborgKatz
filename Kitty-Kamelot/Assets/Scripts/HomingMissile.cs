@@ -19,7 +19,45 @@ public class HomingMissile : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
         //explosion = transform.Find("Explosion").gameObject;
-        target = GameObject.Find("Hover Bike v5").transform;
+        GameObject playerSpawner = GameObject.Find("PlayerSpawner");
+        Transform chosenPlayer = this.transform;
+        float bestRoll = 0;
+        if (playerSpawner.GetComponent<playerSpawner>().p1active)
+        {
+            float roll = Random.value;
+            if (roll > bestRoll){
+                bestRoll = roll;
+                chosenPlayer = playerSpawner.GetComponent<playerSpawner>().player1.transform;
+            }
+        }
+        if (playerSpawner.GetComponent<playerSpawner>().p2active)
+        {
+            float roll = Random.value;
+            if (roll > bestRoll)
+            {
+                bestRoll = roll;
+                chosenPlayer = playerSpawner.GetComponent<playerSpawner>().player2.transform;
+            }
+        }
+        if (playerSpawner.GetComponent<playerSpawner>().p3active)
+        {
+            float roll = Random.value;
+            if (roll > bestRoll)
+            {
+                bestRoll = roll;
+                chosenPlayer = playerSpawner.GetComponent<playerSpawner>().player3.transform;
+            }
+        }
+        if (playerSpawner.GetComponent<playerSpawner>().p4active)
+        {
+            float roll = Random.value;
+            if (roll > bestRoll)
+            {
+                bestRoll = roll;
+                chosenPlayer = playerSpawner.GetComponent<playerSpawner>().player4.transform;
+            }
+        }
+        target = chosenPlayer;
         //rb.AddRelativeForce(Vector3.forward * 10f, ForceMode.Impulse);
     }
 
