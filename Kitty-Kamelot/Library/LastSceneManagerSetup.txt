@@ -1,14 +1,4 @@
 sceneSetups:
 - path: Assets/Scenes/CharacterSelect.unity
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/CharacterSelect.unity
-=======
-- path: Assets/Scenes/Ben's_Bungalow.unity
->>>>>>> 61fc77f02bed1b11148d2e4f2dbe221120fccc55
->>>>>>> 0cc823b476de26c9b8b305898fecfa85d090265a
->>>>>>> a9ae04132edc79eeb41b578fe1e13b0dedb7bfcf
   isLoaded: 1
   isActive: 1
