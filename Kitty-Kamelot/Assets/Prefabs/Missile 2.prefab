@@ -582,7 +582,7 @@ MonoBehaviour:
   slowMoRange: 3
   detonationRange: 0.5
   explosion: {fileID: 128182, guid: d086275807b836a45bab420a5aed08e8, type: 2}
-  timeLeft: 7
+  timeLeft: 10
 --- !u!135 &13587708
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -13880,7 +13880,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: timeLeft
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: slowMoRange
