@@ -16,7 +16,7 @@ public class BossGuy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         missileEmitter = transform.Find("Missile Emitter").gameObject.transform;
-        dieExplode = transform.Find("Big Bang").gameObject.GetComponent<ParticleSystem>();
+        //dieExplode = transform.Find("Big Bang").gameObject.GetComponent<ParticleSystem>();
         Instantiate(missilePrefab, missileEmitter.position, Quaternion.identity);
         StartCoroutine(MissileSwarm());
 
