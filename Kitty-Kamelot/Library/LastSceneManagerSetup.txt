@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/Karl's_Battleship.unity
+  isLoaded: 1
+  isActive: 1

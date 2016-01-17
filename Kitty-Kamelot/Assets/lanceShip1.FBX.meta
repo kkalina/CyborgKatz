@@ -1,0 +1,301 @@
+fileFormatVersion: 2
+guid: 7222b753317e171469e0c0f11cecb307
+timeCreated: 1452995790
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: fin
+    100002: fin 1
+    100004: fin2
+    100006: fin2 1
+    100008: Group_1
+    100010: Group_1 1
+    100012: hoverer
+    100014: ID580
+    100016: ID586
+    100018: ID592
+    100020: ID598
+    100022: ID612
+    100024: ID618
+    100026: ID624
+    100028: ID638
+    100030: ID644
+    100032: ID650
+    100034: ID656
+    100036: ID660
+    100038: ID664
+    100040: ID668
+    100042: instance_1
+    100044: instance_10
+    100046: instance_10 1
+    100048: instance_11
+    100050: instance_11 1
+    100052: instance_12
+    100054: instance_12 1
+    100056: instance_13
+    100058: instance_14
+    100060: instance_15
+    100062: instance_16
+    100064: instance_17
+    100066: instance_2
+    100068: instance_3
+    100070: instance_4
+    100072: instance_4 1
+    100074: instance_5
+    100076: instance_6
+    100078: instance_7
+    100080: instance_7 1
+    100082: instance_8
+    100084: instance_8 1
+    100086: instance_9
+    100088: instance_9 1
+    100090: lance
+    100092: //RootNode
+    100094: mid
+    100096: mid 1
+    100098: shield
+    100100: strut
+    100102: strut 1
+    100104: strut 10
+    100106: strut 11
+    100108: strut 2
+    100110: strut 3
+    100112: strut 4
+    100114: strut 5
+    100116: strut 6
+    100118: strut 7
+    100120: strut 8
+    100122: strut 9
+    100124: thruster
+    400000: fin
+    400002: fin 1
+    400004: fin2
+    400006: fin2 1
+    400008: Group_1
+    400010: Group_1 1
+    400012: hoverer
+    400014: ID580
+    400016: ID586
+    400018: ID592
+    400020: ID598
+    400022: ID612
+    400024: ID618
+    400026: ID624
+    400028: ID638
+    400030: ID644
+    400032: ID650
+    400034: ID656
+    400036: ID660
+    400038: ID664
+    400040: ID668
+    400042: instance_1
+    400044: instance_10
+    400046: instance_10 1
+    400048: instance_11
+    400050: instance_11 1
+    400052: instance_12
+    400054: instance_12 1
+    400056: instance_13
+    400058: instance_14
+    400060: instance_15
+    400062: instance_16
+    400064: instance_17
+    400066: instance_2
+    400068: instance_3
+    400070: instance_4
+    400072: instance_4 1
+    400074: instance_5
+    400076: instance_6
+    400078: instance_7
+    400080: instance_7 1
+    400082: instance_8
+    400084: instance_8 1
+    400086: instance_9
+    400088: instance_9 1
+    400090: lance
+    400092: //RootNode
+    400094: mid
+    400096: mid 1
+    400098: shield
+    400100: strut
+    400102: strut 1
+    400104: strut 10
+    400106: strut 11
+    400108: strut 2
+    400110: strut 3
+    400112: strut 4
+    400114: strut 5
+    400116: strut 6
+    400118: strut 7
+    400120: strut 8
+    400122: strut 9
+    400124: thruster
+    2300000: fin
+    2300002: fin 1
+    2300004: fin2
+    2300006: fin2 1
+    2300008: Group_1
+    2300010: Group_1 1
+    2300012: hoverer
+    2300014: ID580
+    2300016: ID586
+    2300018: ID592
+    2300020: ID598
+    2300022: ID612
+    2300024: ID618
+    2300026: ID624
+    2300028: ID638
+    2300030: ID644
+    2300032: ID650
+    2300034: lance
+    2300036: mid
+    2300038: mid 1
+    2300040: shield
+    2300042: strut
+    2300044: strut 1
+    2300046: strut 10
+    2300048: strut 11
+    2300050: strut 2
+    2300052: strut 3
+    2300054: strut 4
+    2300056: strut 5
+    2300058: strut 6
+    2300060: strut 7
+    2300062: strut 8
+    2300064: strut 9
+    2300066: thruster
+    3300000: fin
+    3300002: fin 1
+    3300004: fin2
+    3300006: fin2 1
+    3300008: Group_1
+    3300010: Group_1 1
+    3300012: hoverer
+    3300014: ID580
+    3300016: ID586
+    3300018: ID592
+    3300020: ID598
+    3300022: ID612
+    3300024: ID618
+    3300026: ID624
+    3300028: ID638
+    3300030: ID644
+    3300032: ID650
+    3300034: lance
+    3300036: mid
+    3300038: mid 1
+    3300040: shield
+    3300042: strut
+    3300044: strut 1
+    3300046: strut 10
+    3300048: strut 11
+    3300050: strut 2
+    3300052: strut 3
+    3300054: strut 4
+    3300056: strut 5
+    3300058: strut 6
+    3300060: strut 7
+    3300062: strut 8
+    3300064: strut 9
+    3300066: thruster
+    4300000: lance
+    4300002: ID638
+    4300004: ID644
+    4300006: ID650
+    4300008: hoverer
+    4300010: ID612
+    4300012: ID618
+    4300014: ID624
+    4300016: thruster
+    4300018: ID580
+    4300020: ID586
+    4300022: ID592
+    4300024: ID598
+    4300026: shield
+    4300028: mid
+    4300030: strut
+    4300032: strut
+    4300034: strut
+    4300036: strut
+    4300038: strut
+    4300040: strut
+    4300042: mid
+    4300044: strut
+    4300046: strut
+    4300048: strut
+    4300050: strut
+    4300052: strut
+    4300054: strut
+    4300056: fin
+    4300058: fin2
+    4300060: fin
+    4300062: fin2
+    4300064: Group_1
+    4300066: Group_1
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

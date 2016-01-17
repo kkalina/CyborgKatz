@@ -1,0 +1,17 @@
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/obj/Debug/Assembly-CSharp.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/UnityEngine.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/UnityEditor.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Joshua_Spigelman/Desktop/GameJam/Kitty-Kamelot/Kitty-Kamelot/Temp/bin/Debug/Mono.Cecil.Mdb.dll
