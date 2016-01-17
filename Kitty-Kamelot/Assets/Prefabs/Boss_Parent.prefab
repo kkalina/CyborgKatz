@@ -1286,7 +1286,7 @@ FixedJoint:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
-  m_EnablePreprocessing: 1
+  m_EnablePreprocessing: 0
 --- !u!138 &13874152
 FixedJoint:
   m_ObjectHideFlags: 1
