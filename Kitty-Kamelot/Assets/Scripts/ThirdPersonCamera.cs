@@ -4,7 +4,12 @@ using XInputDotNetPure;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-	public int playerCamNumber;
+    public GameObject player1Icon;
+    public GameObject player2Icon;
+    public GameObject player3Icon;
+    public GameObject player4Icon;
+
+    public int playerCamNumber;
 	public int numPlayers;
     public PlayerIndex playerIndexNum;
 
@@ -22,7 +27,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void Start()
     {
-        
+        if(playerCamNumber == 1)
+            player1Icon.SetActive(true);
+        else if (playerCamNumber == 2)
+            player2Icon.SetActive(true);
+        else if (playerCamNumber == 3)
+            player3Icon.SetActive(true);
+        else 
+            player4Icon.SetActive(true);
+
         numPlayers = playerSelectionManager.playerCount;
 
         cam = this.gameObject.GetComponent<Camera>();
