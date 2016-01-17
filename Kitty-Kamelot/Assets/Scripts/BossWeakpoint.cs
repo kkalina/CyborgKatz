@@ -14,4 +14,8 @@ public class BossWeakpoint : MonoBehaviour {
 	void FixedUpdate () {
         //transform.RotateAround(Boss.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
+
+    void OnDestroy() {
+        Boss.GetComponent<BossGuy>().bossHealth -= 1;
+    }
 }
