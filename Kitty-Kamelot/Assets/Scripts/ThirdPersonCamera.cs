@@ -18,6 +18,8 @@ public class ThirdPersonCamera : MonoBehaviour
 	public float shakeIntensity = 0.1f;
     private Camera cam;
 
+    private GamePadState state;
+
     void Start()
     {
         
@@ -50,9 +52,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Vector3 pos = poi.position;
-		pos -= poi.forward * distance;
-		pos += poi.up * height;
+
+        state = GamePad.GetState(playerIndexNum);
+
+        Vector3 pos = poi.position;
+        if(state.Buttons.Y == ButtonState.Pressed)
+		    pos -= poi.forward * -distance;
+        else
+            pos -= poi.forward * distance;
+        pos += poi.up * height;
 		//Vector3 rot = poi.localEulerAngles;
 
 		Vector3 pos2 = (1 - u) * transform.position + u * pos;
@@ -64,6 +72,7 @@ public class ThirdPersonCamera : MonoBehaviour
 			pos2.z += Random.value * shakeIntensity * Random .Range(-1, 1);
 		}
 
+        
 		transform.position = pos2;
 
 		transform.LookAt(camTarget);
