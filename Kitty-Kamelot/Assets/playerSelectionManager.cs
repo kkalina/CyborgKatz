@@ -35,6 +35,13 @@ public class playerSelectionManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
+		playerCount = 0;
+
+		p1Selected = false;
+		p2Selected = false;
+		p3Selected = false;
+		p4Selected = false;
+
         player1Index = (PlayerIndex)0;
         player2Index = (PlayerIndex)1;
         player3Index = (PlayerIndex)2;
@@ -64,6 +71,7 @@ public class playerSelectionManager : MonoBehaviour {
                 playerCount++;
                 selectNoise.Play();
             }
+			GamePad.SetVibration (PlayerIndex.One, 0, 0);
         }
         else {
             Debug.Log("Controller 1 Not Connected.");
@@ -78,7 +86,8 @@ public class playerSelectionManager : MonoBehaviour {
                 p2Preview.GetComponent<rotate>().enabled = true;
                 playerCount++;
                 selectNoise.Play();
-            }
+			}
+			GamePad.SetVibration (PlayerIndex.Two, 0, 0);
         }
         else {
             Debug.Log("Controller 2 Not Connected.");
@@ -93,7 +102,8 @@ public class playerSelectionManager : MonoBehaviour {
                 p3Preview.GetComponent<rotate>().enabled = true;
                 playerCount++;
                 selectNoise.Play();
-            }
+			}
+			GamePad.SetVibration (PlayerIndex.Three, 0, 0);
         }
         else {
             Debug.Log("Controller 3 Not Connected.");
@@ -108,7 +118,8 @@ public class playerSelectionManager : MonoBehaviour {
                 p4Preview.GetComponent<rotate>().enabled = true;
                 playerCount++;
                 selectNoise.Play();
-            }
+			}
+			GamePad.SetVibration (PlayerIndex.Four, 0, 0);
         }
         else {
             Debug.Log("Controller 4 Not Connected.");
