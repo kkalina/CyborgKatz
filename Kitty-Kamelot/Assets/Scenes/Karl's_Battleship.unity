@@ -672,21 +672,73 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 11428142, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
-      propertyPath: playerCamera
-      value: 
+    - target: {fileID: 189634, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_Name
+      value: HoverSensor 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11428142, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
-      propertyPath: health
-      value: 1
+    - target: {fileID: 184056, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_Name
+      value: HoverSensor 4
       objectReference: {fileID: 0}
-    - target: {fileID: 164120, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 167858, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_Name
+      value: HoverSensor 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8288930, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
+    - target: {fileID: 110916, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_Name
+      value: HoverSensor 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 460962, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 480586, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 462564, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 496500, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 496316, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 465896, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 462594, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 452456, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 436516, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 434954, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 422738, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 413992, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 413988, guid: 464c64619435a4d44bbf536925fe8490, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 464c64619435a4d44bbf536925fe8490, type: 2}

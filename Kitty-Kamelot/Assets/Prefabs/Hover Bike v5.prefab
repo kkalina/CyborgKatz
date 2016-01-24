@@ -256,6 +256,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &110916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 493518}
+  m_Layer: 0
+  m_Name: HoverSensor 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &112594
 GameObject:
   m_ObjectHideFlags: 1
@@ -1918,7 +1933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &167518
 GameObject:
   m_ObjectHideFlags: 1
@@ -1929,6 +1944,21 @@ GameObject:
   - 4: {fileID: 410412}
   m_Layer: 0
   m_Name: instance_9 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &167858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 462564}
+  m_Layer: 0
+  m_Name: HoverSensor 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2499,7 +2529,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 460962}
   m_Layer: 0
-  m_Name: HoverSensor
+  m_Name: HoverSensor 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2631,6 +2661,21 @@ GameObject:
   - 114: {fileID: 11447198}
   m_Layer: 0
   m_Name: ShotParticle_Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &189634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480586}
+  m_Layer: 0
+  m_Name: HoverSensor 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3408,7 +3453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &413992
 Transform:
   m_ObjectHideFlags: 1
@@ -3430,7 +3475,7 @@ Transform:
   - {fileID: 400658}
   - {fileID: 497538}
   m_Father: {fileID: 477850}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &414370
 Transform:
   m_ObjectHideFlags: 1
@@ -3632,7 +3677,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.82}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &423556
 Transform:
   m_ObjectHideFlags: 1
@@ -3913,7 +3958,7 @@ Transform:
   - {fileID: 402620}
   - {fileID: 426832}
   m_Father: {fileID: 477850}
-  m_RootOrder: 7
+  m_RootOrder: 5
 --- !u!4 &434968
 Transform:
   m_ObjectHideFlags: 1
@@ -3961,7 +4006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!4 &439182
 Transform:
   m_ObjectHideFlags: 1
@@ -4197,7 +4242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!4 &453314
 Transform:
   m_ObjectHideFlags: 1
@@ -4410,11 +4455,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184056}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -0.07, z: 0.315}
+  m_LocalPosition: {x: -1.25, y: 0, z: -0.4499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 2
+  m_RootOrder: 9
 --- !u!4 &461280
 Transform:
   m_ObjectHideFlags: 1
@@ -4439,6 +4484,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 414370}
   m_RootOrder: 1
+--- !u!4 &462564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167858}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 1.25, y: 0, z: 0.4499998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477850}
+  m_RootOrder: 7
 --- !u!4 &462594
 Transform:
   m_ObjectHideFlags: 1
@@ -4453,7 +4510,7 @@ Transform:
   - {fileID: 469344}
   - {fileID: 439704}
   m_Father: {fileID: 477850}
-  m_RootOrder: 9
+  m_RootOrder: 14
 --- !u!4 &462706
 Transform:
   m_ObjectHideFlags: 1
@@ -4557,7 +4614,7 @@ Transform:
   m_LocalScale: {x: 1.6666666, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 6
+  m_RootOrder: 10
 --- !u!4 &466426
 Transform:
   m_ObjectHideFlags: 1
@@ -4830,22 +4887,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3, y: 0.51000005, z: -16.15}
+  m_LocalPosition: {x: -3.87251, y: 14.425, z: -26.741514}
   m_LocalScale: {x: 0.6, y: 0.5, z: 2}
   m_Children:
   - {fileID: 471294}
   - {fileID: 403040}
-  - {fileID: 460962}
   - {fileID: 413988}
   - {fileID: 422738}
   - {fileID: 413992}
-  - {fileID: 465896}
   - {fileID: 434954}
+  - {fileID: 493518}
+  - {fileID: 462564}
+  - {fileID: 480586}
+  - {fileID: 460962}
+  - {fileID: 465896}
+  - {fileID: 436516}
+  - {fileID: 452456}
   - {fileID: 496316}
   - {fileID: 462594}
-  - {fileID: 452456}
   - {fileID: 496500}
-  - {fileID: 436516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &478256
@@ -4885,6 +4945,18 @@ Transform:
   - {fileID: 426436}
   m_Father: {fileID: 413992}
   m_RootOrder: 2
+--- !u!4 &480586
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189634}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 1.25, y: 0, z: -0.4499998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477850}
+  m_RootOrder: 8
 --- !u!4 &480622
 Transform:
   m_ObjectHideFlags: 1
@@ -5146,6 +5218,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497056}
   m_RootOrder: 0
+--- !u!4 &493518
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110916}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -1.25, y: 0, z: 0.4499998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477850}
+  m_RootOrder: 6
 --- !u!4 &494020
 Transform:
   m_ObjectHideFlags: 1
@@ -5184,7 +5268,7 @@ Transform:
   - {fileID: 434646}
   - {fileID: 414370}
   m_Father: {fileID: 477850}
-  m_RootOrder: 8
+  m_RootOrder: 13
 --- !u!4 &496328
 Transform:
   m_ObjectHideFlags: 1
@@ -5208,7 +5292,7 @@ Transform:
   m_LocalScale: {x: 1.6666666, y: 2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 477850}
-  m_RootOrder: 11
+  m_RootOrder: 15
 --- !u!4 &497056
 Transform:
   m_ObjectHideFlags: 1
@@ -10567,13 +10651,16 @@ MonoBehaviour:
   shipVelocity: 120
   turnSpeed: 25
   curCharge: 10
-  jumpForce: 13
+  jumpForce: 4
   hoverHeight: 1.5
-  hoverForce: 50
+  hoverForce: 30
   lanceRange: 1
   correctionSpeed: 1
   leanForce: 6
-  hoverPoint: {fileID: 460962}
+  hoverSensor1: {fileID: 0}
+  hoverSensor2: {fileID: 0}
+  hoverSensor3: {fileID: 0}
+  hoverSensor4: {fileID: 0}
   shipState: 0
   rocketBoostDuration: 3
   rocketPower: 2

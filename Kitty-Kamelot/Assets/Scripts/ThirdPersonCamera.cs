@@ -17,7 +17,7 @@ public class ThirdPersonCamera : MonoBehaviour
 	public Transform camTarget;
 	public float distance = 5, height = 1;
 	public float u = 0.1f;
-	//public float v = .1f;
+	private float v = .01f;
 
 	public bool shake = false;
 	public float shakeIntensity = 0.1f;
@@ -74,12 +74,15 @@ public class ThirdPersonCamera : MonoBehaviour
         else
             pos -= poi.forward * distance;
         pos += poi.up * height;
-		//Vector3 rot = poi.localEulerAngles;
+		Vector3 rot = poi.localEulerAngles;
 
 		Vector3 pos2 = (1 - u) * transform.position + u * pos;
 		//Vector3 rot2 = (1 - v) * transform.localEulerAngles + v * rot;
+        //rot2.y = poi.transform.localEulerAngles.y;
 
-		if (shake) {
+
+
+        if (shake) {
 			pos2.x += Random.value * shakeIntensity * Random .Range(-1, 1);
 			pos2.y += Random.value * shakeIntensity * Random .Range(-1, 1);
 			pos2.z += Random.value * shakeIntensity * Random .Range(-1, 1);

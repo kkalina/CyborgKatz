@@ -37,10 +37,11 @@ public class playerSelectionManager : MonoBehaviour {
 
 		playerCount = 0;
 
-		p1Selected = false;
-		p2Selected = false;
-		p3Selected = false;
-		p4Selected = false;
+        if (!p1Selected) { p1Selected = false; }
+        if (!p2Selected) { p2Selected = false; }
+        if (!p3Selected) { p3Selected = false; }
+        if (!p4Selected) { p4Selected = false; }
+
 
         player1Index = (PlayerIndex)0;
         player2Index = (PlayerIndex)1;

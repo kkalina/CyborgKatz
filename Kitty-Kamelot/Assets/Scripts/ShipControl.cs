@@ -51,7 +51,12 @@ public class ShipControl : MonoBehaviour
 
     private Rigidbody shipRigid;
     private Transform lancePoint;
-    public Transform hoverPoint;
+
+    public Transform hoverSensor1;
+    public Transform hoverSensor2;
+    public Transform hoverSensor3;
+    public Transform hoverSensor4;
+
     private Vector3 moveVec;
 
     public enum shipStates { normalMode, rocketMode };
@@ -95,7 +100,11 @@ public class ShipControl : MonoBehaviour
         }
 
         shipRigid = this.gameObject.GetComponent<Rigidbody>();
-        hoverPoint = transform.Find("HoverSensor").transform;
+        hoverSensor1 = transform.Find("HoverSensor 1").transform;
+        hoverSensor2 = transform.Find("HoverSensor 2").transform;
+        hoverSensor3 = transform.Find("HoverSensor 3").transform;
+        hoverSensor4 = transform.Find("HoverSensor 4").transform;
+
         lancePoint = transform.Find("Lance").transform;
         shipState = shipStates.normalMode;
     }
@@ -227,8 +236,16 @@ public class ShipControl : MonoBehaviour
         float h = state.ThumbSticks.Left.X;
         //bool rstrafe = Input.GetButton("StrafeR");
         //bool lstrafe = Input.GetButton("StrafeL");
+        
+        //Activate Hovering
+        TerrainNormalHover(hoverSensor1);
+        TerrainNormalHover(hoverSensor2);
+        TerrainNormalHover(hoverSensor3);
+        TerrainNormalHover(hoverSensor4);
 
-        if(h > 0.1f)
+
+
+        if (h > 0.1f)
         {
             LFlap.GetComponent<Animator>().SetBool("flapOpen", true);
         }
@@ -261,9 +278,8 @@ public class ShipControl : MonoBehaviour
             }
 
 
-            ShipStabilizer();
+            //ShipStabilizer();
 
-            TerrainNormalHover();
             //Forward Motion
             //Boost ();
             shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity, ForceMode.Force);
@@ -281,7 +297,7 @@ public class ShipControl : MonoBehaviour
                 shipRigid.AddRelativeForce(Vector3.left * 30, ForceMode.Force);
             //Boost ();        
             //Leaning
-            shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
+            //shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
             //Debug.Log(shipRigid.velocity.magnitude + ", " + curCharge.ToString());
             Lance();
         }
@@ -303,16 +319,15 @@ public class ShipControl : MonoBehaviour
 
 
             playerCamera.gameObject.GetComponent<ThirdPersonCamera>().shakeIntensity = 0.05f * (Time.time - rocketEndTime);
-            ShipStabilizer();
+            //ShipStabilizer();
 
-            TerrainNormalHover();
             //Forward Motion
             shipRigid.AddRelativeForce(Vector3.forward * rocketPower * shipVelocity, ForceMode.Force);
             //shipRigid.AddRelativeForce(0f, 0f, 5f * h * shipRigid.velocity.x, ForceMode.Force);
             shipRigid.AddRelativeTorque(0f, h * turnSpeed, 0f, ForceMode.Force);
 
             //Leaning
-            shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
+            //shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
 
             Lance();
 
@@ -328,37 +343,35 @@ public class ShipControl : MonoBehaviour
         }
     }
 
-    void TerrainNormalHover()
+    void TerrainNormalHover(Transform thrustPoint)
     {
-        if (Physics.Raycast(transform.position, hoverPoint.forward, out groundHit, hoverHeight))
+        if (Physics.Raycast(thrustPoint.position, -this.gameObject.transform.up, out groundHit, hoverHeight))
         {
-            /*Debug.Log(groundHit.normal);
-            //Vector3 stableVec = groundHit.normal;
-            //Vector3 stableQuat = Quaternion.LookRotation(groundHit.normal).eulerAngles + shipRigid.transform.right * 90f;
-            //stableQuat.y = shipRigid.transform.localEulerAngles.y;
-            //stableQuat.x *= -1f;
-            //shipRigid.transform.localRotation = Quaternion.Slerp(shipRigid.transform.localRotation, 
-            //    stableQuat, Time.time * correctionSpeed);
-            //if (shipRigid.transform.localEulerAngles != Vector3.zero)
-            //{
-            //shipRigid.transform.localEulerAngles = Vector3.Lerp(shipRigid.transform.localEulerAngles,
-            //    stableQuat, Time.deltaTime);
-            //}
-            //Debug.Log("stable is: " + stableQuat + " normal is: " + groundHit.normal);
-            //shipRigid.transform.localEulerAngles = stableQuat;*/
 
-            //Jumping
-            //if (Input.GetButtonDown("Fire1")) {
             if (state.Buttons.A == ButtonState.Pressed)
             {
                 shipRigid.velocity = new Vector3(shipRigid.velocity.x, 0f, shipRigid.velocity.z);
                 shipRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
-            shipRigid.AddForce(Vector3.up * hoverForce * (hoverHeight - groundHit.distance), ForceMode.Force);
+            //Do we want it this way?????
+            shipRigid.AddForceAtPosition(groundHit.normal/*Vector3.up*/ * hoverForce * (hoverHeight - groundHit.distance), thrustPoint.position, ForceMode.Force);
+            //You can post it in 3D coordinates.You must think of a sphere, rather than just a circle.
+            //Let r = radius, t = angle on x-y plane, & p = angle off of z - axis. Then you get:
+            float rx = Mathf.Sin(groundHit.normal.z) * Mathf.Cos(groundHit.normal.x);
+            float rz = Mathf.Sin(groundHit.normal.z) * Mathf.Sin(groundHit.normal.x);
+            Vector3 terrainGoal = new Vector3(rx, shipRigid.transform.localEulerAngles.y, rz);
+            //shipRigid.AddTorque(shipRigid.transform.localEulerAngles - terrainGoal, ForceMode.Force);
+            //shipRigid.transform.LookAt(shipRigid.transform.forward, groundHit.normal);
+            Debug.Log("RX is " + rx + ", RZ is " + rz + " angleDiff = " + (shipRigid.transform.localEulerAngles - terrainGoal));
+
+            //x = r * sin(p) * cos(t)
+            //y = r * sin(p) * sin(t)
+            //z = r * cos(p)
         }
         else {
             //ShipStabilizer();
         }
+        
     }
 
     void Lance()
