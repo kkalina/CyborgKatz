@@ -17281,6 +17281,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11471296, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: hoverForce
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
   m_IsPrefabParent: 0
