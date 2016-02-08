@@ -16,8 +16,8 @@ public class ThirdPersonCamera : MonoBehaviour
 	public Transform poi;
 	public Transform camTarget;
 	public float distance = 5, height = 1;
-	public float u = 0.1f;
-	private float v = .01f;
+	public float u = 01f;
+	private float v = 01f;
 
 	public bool shake = false;
 	public float shakeIntensity = 0.1f;
@@ -91,8 +91,8 @@ public class ThirdPersonCamera : MonoBehaviour
         
 		transform.position = pos2;
 
-		transform.LookAt(camTarget);
-		//transform.localEulerAngles = rot2;
+        transform.rotation = Quaternion.Slerp(camTarget.rotation, transform.rotation, 2f * Time.fixedDeltaTime);
+        //transform.localEulerAngles = rot2;
 
-	}
+    }
 }

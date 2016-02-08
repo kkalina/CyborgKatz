@@ -56,6 +56,7 @@ public class ShipControl : MonoBehaviour
     public Transform hoverSensor2;
     public Transform hoverSensor3;
     public Transform hoverSensor4;
+    private Transform[] hoverSensors;
 
     private Vector3 moveVec;
 
@@ -73,6 +74,16 @@ public class ShipControl : MonoBehaviour
     public float engineLightIntensityBoost = 8f;
 
     public float engineResponseSpeed = 0.4f;
+
+    public Collider belowCar;
+
+    private System.Type MSHCOL = new MeshCollider().GetType();
+    private System.Type BOXCOL = new BoxCollider().GetType();
+    private System.Type SPHCOL = new SphereCollider().GetType();
+    private System.Type CAPSCOL = new CapsuleCollider().GetType();
+    private System.Type TERCOL = new TerrainCollider().GetType();
+    private System.Type WHECOL = new WheelCollider().GetType();
+
 
     // Use this for initialization
     void Start()
@@ -100,15 +111,20 @@ public class ShipControl : MonoBehaviour
         }
 
         shipRigid = this.gameObject.GetComponent<Rigidbody>();
+        
         hoverSensor1 = transform.Find("HoverSensor 1").transform;
         hoverSensor2 = transform.Find("HoverSensor 2").transform;
         hoverSensor3 = transform.Find("HoverSensor 3").transform;
         hoverSensor4 = transform.Find("HoverSensor 4").transform;
+        hoverSensors = new Transform[4] { hoverSensor1, hoverSensor2, hoverSensor3, hoverSensor4 };
 
         lancePoint = transform.Find("Lance").transform;
         shipState = shipStates.normalMode;
+        
+        
     }
 
+    #region oldcode
     void Update()
     {
 
@@ -209,11 +225,11 @@ public class ShipControl : MonoBehaviour
 
         }
     }
+    #endregion
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
 
         state = GamePad.GetState(playerIndexNum);
 
@@ -238,10 +254,7 @@ public class ShipControl : MonoBehaviour
         //bool lstrafe = Input.GetButton("StrafeL");
         
         //Activate Hovering
-        TerrainNormalHover(hoverSensor1);
-        TerrainNormalHover(hoverSensor2);
-        TerrainNormalHover(hoverSensor3);
-        TerrainNormalHover(hoverSensor4);
+        TerrainNormalHover(hoverSensors);
 
 
 
@@ -291,10 +304,10 @@ public class ShipControl : MonoBehaviour
             //Strafing
             //if (rstrafe)
             if (state.Buttons.RightShoulder == ButtonState.Pressed)
-                shipRigid.AddRelativeForce(Vector3.right * 30, ForceMode.Force);
+                shipRigid.AddRelativeForce(Vector3.right * 90, ForceMode.Force);
             //else if (lstrafe)
             if (state.Buttons.LeftShoulder == ButtonState.Pressed)
-                shipRigid.AddRelativeForce(Vector3.left * 30, ForceMode.Force);
+                shipRigid.AddRelativeForce(Vector3.left * 90, ForceMode.Force);
             //Boost ();        
             //Leaning
             //shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
@@ -343,35 +356,213 @@ public class ShipControl : MonoBehaviour
         }
     }
 
-    void TerrainNormalHover(Transform thrustPoint)
+    void TerrainNormalHover(Transform[] thrusters)
     {
-        if (Physics.Raycast(thrustPoint.position, -this.gameObject.transform.up, out groundHit, hoverHeight))
+        #region terrain
+        int thrustercount = 0;
+        foreach (Transform thrustPoint in thrusters)
         {
-
-            if (state.Buttons.A == ButtonState.Pressed)
+            //reg thruster check
+            if (Physics.Raycast(thrustPoint.position, -this.gameObject.transform.up, out groundHit, hoverHeight))
             {
-                shipRigid.velocity = new Vector3(shipRigid.velocity.x, 0f, shipRigid.velocity.z);
-                shipRigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
-            //Do we want it this way?????
-            shipRigid.AddForceAtPosition(groundHit.normal/*Vector3.up*/ * hoverForce * (hoverHeight - groundHit.distance), thrustPoint.position, ForceMode.Force);
-            //You can post it in 3D coordinates.You must think of a sphere, rather than just a circle.
-            //Let r = radius, t = angle on x-y plane, & p = angle off of z - axis. Then you get:
-            float rx = Mathf.Sin(groundHit.normal.z) * Mathf.Cos(groundHit.normal.x);
-            float rz = Mathf.Sin(groundHit.normal.z) * Mathf.Sin(groundHit.normal.x);
-            Vector3 terrainGoal = new Vector3(rx, shipRigid.transform.localEulerAngles.y, rz);
-            //shipRigid.AddTorque(shipRigid.transform.localEulerAngles - terrainGoal, ForceMode.Force);
-            //shipRigid.transform.LookAt(shipRigid.transform.forward, groundHit.normal);
-            Debug.Log("RX is " + rx + ", RZ is " + rz + " angleDiff = " + (shipRigid.transform.localEulerAngles - terrainGoal));
+                if (state.Buttons.A == ButtonState.Pressed)
+                {
+                    shipRigid.AddForce(shipRigid.transform.up * jumpForce, ForceMode.Impulse);
+                }
+                //Do we want it this way?????
+                shipRigid.AddForceAtPosition(groundHit.normal/*Vector3.up*/ * hoverForce * (hoverHeight - groundHit.distance), thrustPoint.position, ForceMode.Force);
 
-            //x = r * sin(p) * cos(t)
-            //y = r * sin(p) * sin(t)
-            //z = r * cos(p)
+                #region hoverdebug
+                //You can post it in 3D coordinates.You must think of a sphere, rather than just a circle.
+                //Let r = radius, t = angle on x-y plane, & p = angle off of z - axis. Then you get:
+                //            float rx = Mathf.Sin(groundHit.normal.z) * Mathf.Cos(groundHit.normal.x);
+                //            float rz = Mathf.Sin(groundHit.normal.z) * Mathf.Sin(groundHit.normal.x);
+                //            Vector3 terrainGoal = new Vector3(rx, shipRigid.transform.localEulerAngles.y, rz);
+                //shipRigid.AddTorque(shipRigid.transform.localEulerAngles - terrainGoal, ForceMode.Force);
+                //shipRigid.transform.LookAt(shipRigid.transform.forward, groundHit.normal);
+                //            Debug.Log("RX is " + rx + ", RZ is " + rz + " angleDiff = " + (shipRigid.transform.localEulerAngles - terrainGoal));
+
+                //x = r * sin(p) * cos(t)
+                //y = r * sin(p) * sin(t)
+                //z = r * cos(p)
+                #endregion
+            }
+            else {
+                //ShipStabilizer();
+            }
+
+            //Gravity
+            if (thrustercount == 3)
+            {
+                float gravStr = 9.8f;
+                Vector3 gravAng = Vector3.down;
+                //possibly cast a bunch of rays and attract you to the shortest distance
+                System.Type colType;
+                if (!Physics.Raycast(shipRigid.position, -this.gameObject.transform.up, out groundHit, hoverHeight)
+                    && Physics.Raycast(shipRigid.position, -this.gameObject.transform.up, out groundHit, 40f)
+                    && groundHit.transform.gameObject.tag != "NoGrav")
+                {
+                    #region HighHover
+                    if (groundHit.collider.tag != "NoGrav")
+                    {
+                        if (groundHit.collider == null && belowCar == null)
+                        {
+                            belowCar = GameObject.Find("Floor").GetComponent<Collider>();
+                        }
+                        else if ((belowCar == null && groundHit.collider != null) || groundHit.collider != belowCar)
+                        {
+                            belowCar = groundHit.collider;
+                        }
+
+                        if (belowCar == null)
+                        {
+                            belowCar = GameObject.Find("Floor").GetComponent<Collider>();
+                        }
+                    }
+                    colType = belowCar.GetType();
+                    Vector3[] pointMat = new Vector3[3];
+                    float[] vertdists = new float[3];
+                    Vector3 point = shipRigid.position;
+                    Vector3[] thrusterGravs = new Vector3[4];
+
+                    if (Types.Equals(colType, MSHCOL))
+                    {
+                        #region Mesh Colliders
+                        vertdists[0] = (point - ((MeshCollider)belowCar).sharedMesh.vertices[0]).sqrMagnitude;
+                        pointMat[0] = ((MeshCollider)belowCar).sharedMesh.vertices[0];
+
+                        vertdists[1] = (point - ((MeshCollider)belowCar).sharedMesh.vertices[1]).sqrMagnitude;
+                        pointMat[1] = ((MeshCollider)belowCar).sharedMesh.vertices[1];
+
+                        vertdists[2] = (point - ((MeshCollider)belowCar).sharedMesh.vertices[2]).sqrMagnitude;
+                        pointMat[2] = ((MeshCollider)belowCar).sharedMesh.vertices[2];
+
+                        foreach (Vector3 vertex in ((MeshCollider)belowCar).sharedMesh.vertices)
+                        {
+                            Vector3 diff = point - vertex;
+                            float distSqr = diff.sqrMagnitude;
+                            float tempDist;
+                            if (distSqr < (tempDist = Mathf.Min(vertdists)))
+                            {
+
+                                if (tempDist == vertdists[0])
+                                {
+                                    vertdists[0] = distSqr;
+                                    pointMat[0] = vertex;
+                                }
+                                else if (tempDist == vertdists[1])
+                                {
+                                    vertdists[1] = distSqr;
+                                    pointMat[1] = vertex;
+                                }
+                                else if (tempDist == vertdists[2])
+                                {
+                                    vertdists[2] = distSqr;
+                                    pointMat[2] = vertex;
+                                }
+                            }
+                        }
+                        gravStr = Mathf.Sqrt(Mathf.Sqrt((Mathf.Sqrt(vertdists[0]) + Mathf.Sqrt(vertdists[1]) + Mathf.Sqrt(vertdists[2])) / 3));
+                        gravAng = -Vector3.RotateTowards(-shipRigid.transform.up, (pointMat[0] + pointMat[1] + pointMat[2]) / 3f, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude);
+                        Physics.Raycast(shipRigid.position, gravAng, out groundHit, 30f);
+                        //Debug.DrawRay(shipRigid.position, -gravAng, Color.red);
+
+                        RaycastHit hov1out, hov2out, hov3out, hov4out;
+                        Physics.Raycast(hoverSensor1.position, -gravAng, out hov1out, 40f);
+                        Physics.Raycast(hoverSensor2.position, -gravAng, out hov2out, 40f);
+                        Physics.Raycast(hoverSensor3.position, -gravAng, out hov3out, 40f);
+                        Physics.Raycast(hoverSensor4.position, -gravAng, out hov4out, 40f);
+                        thrusterGravs[0] = -Mathf.Pow(hov1out.distance, 2) * gravAng.normalized;
+                        thrusterGravs[1] = -Mathf.Pow(hov2out.distance, 2) * gravAng.normalized;
+                        thrusterGravs[2] = -Mathf.Pow(hov3out.distance, 2) * gravAng.normalized;
+                        thrusterGravs[3] = -Mathf.Pow(hov4out.distance, 2) * gravAng.normalized;
+
+                        shipRigid.AddForceAtPosition(thrusterGravs[0] * shipRigid.mass, hoverSensor1.position);
+                        shipRigid.AddForceAtPosition(thrusterGravs[1] * shipRigid.mass, hoverSensor2.position);
+                        shipRigid.AddForceAtPosition(thrusterGravs[2] * shipRigid.mass, hoverSensor3.position);
+                        shipRigid.AddForceAtPosition(thrusterGravs[3] * shipRigid.mass, hoverSensor4.position);
+
+                        //                        Debug.DrawRay(hoverSensor1.position, -gravAng, Color.green);
+                        //                        Debug.DrawRay(hoverSensor1.position, thrusterGravs[0], Color.blue);
+                        //                        Debug.DrawRay(hoverSensor2.position, -gravAng, Color.green);
+                        //                        Debug.DrawRay(hoverSensor2.position, thrusterGravs[1], Color.blue);
+                        //                        Debug.DrawRay(hoverSensor3.position, -gravAng, Color.green);
+                        //                        Debug.DrawRay(hoverSensor3.position, thrusterGravs[2], Color.blue);
+                        //                        Debug.DrawRay(hoverSensor4.position, -gravAng, Color.green);
+                        //                        Debug.DrawRay(hoverSensor4.position, thrusterGravs[3], Color.blue);
+                        #endregion
+                    }
+                    else if (Types.Equals(colType, SPHCOL))
+                    {
+                        shipRigid.AddForceAtPosition(Vector3.RotateTowards(hoverSensor1.position, belowCar.transform.position, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude) * shipRigid.mass,
+                            hoverSensor1.position);
+                        shipRigid.AddForceAtPosition(Vector3.RotateTowards(hoverSensor2.position, belowCar.transform.position, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude) * shipRigid.mass,
+                            hoverSensor2.position);
+                        shipRigid.AddForceAtPosition(Vector3.RotateTowards(hoverSensor3.position, belowCar.transform.position, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude) * shipRigid.mass,
+                            hoverSensor3.position);
+                        shipRigid.AddForceAtPosition(Vector3.RotateTowards(hoverSensor4.position, belowCar.transform.position, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude) * shipRigid.mass,
+                            hoverSensor4.position);
+                    }
+                    else if (Types.Equals(colType, TERCOL) || belowCar.transform.up == Vector3.up || belowCar.tag == "Floor")
+                    {
+                        shipRigid.AddForceAtPosition(gravAng * shipRigid.mass, hoverSensor1.position);
+                        shipRigid.AddForceAtPosition(gravAng * shipRigid.mass, hoverSensor2.position);
+                        shipRigid.AddForceAtPosition(gravAng * shipRigid.mass, hoverSensor3.position);
+                        shipRigid.AddForceAtPosition(gravAng * shipRigid.mass, hoverSensor4.position);
+                    }
+                    else if (Types.Equals(colType, BOXCOL))
+                    {
+                        RaycastHit hov1out, hov2out, hov3out, hov4out;
+                        Physics.Raycast(hoverSensor1.position, -groundHit.normal, out hov1out, 40f);
+                        Physics.Raycast(hoverSensor2.position, -groundHit.normal, out hov2out, 40f);
+                        Physics.Raycast(hoverSensor3.position, -groundHit.normal, out hov3out, 40f);
+                        Physics.Raycast(hoverSensor4.position, -groundHit.normal, out hov4out, 40f);
+
+                        shipRigid.AddForceAtPosition(-hov1out.normal * (hoverSensor1.position - belowCar.transform.position).magnitude * shipRigid.mass, hoverSensor1.position);
+                        shipRigid.AddForceAtPosition(-hov2out.normal * (hoverSensor2.position - belowCar.transform.position).magnitude * shipRigid.mass, hoverSensor2.position);
+                        shipRigid.AddForceAtPosition(-hov3out.normal * (hoverSensor3.position - belowCar.transform.position).magnitude * shipRigid.mass, hoverSensor3.position);
+                        shipRigid.AddForceAtPosition(-hov4out.normal * (hoverSensor4.position - belowCar.transform.position).magnitude * shipRigid.mass, hoverSensor4.position);
+                    }
+                    //Vector3 flightGravAngle = Vector3.RotateTowards(shipRigid.transform.up, groundHit.point, 2 * Mathf.PI, 0);
+                    //shipRigid.AddForceAtPosition(-groundHit.normal * shipRigid.mass * Physics.gravity.magnitude * (groundHit.distance), hoverSensor1.position);
+                    //shipRigid.AddForceAtPosition(-groundHit.normal * shipRigid.mass * Physics.gravity.magnitude * (groundHit.distance), hoverSensor2.position);
+                    //shipRigid.AddForceAtPosition(-groundHit.normal * shipRigid.mass * Physics.gravity.magnitude * (groundHit.distance), hoverSensor3.position);
+                    //shipRigid.AddForceAtPosition(-groundHit.normal * shipRigid.mass * Physics.gravity.magnitude * (groundHit.distance), hoverSensor4.position);
+
+                    //shipRigid.transform.LookAt(shipRigid.transform.forward,groundHit.point.normalized);
+
+                    //                    transform.Find("HoverCG").LookAt(new Vector3(groundHit.point.x, groundHit.point.y, groundHit.point.z ));
+                    //                    shipRigid.transform.forward = Vector3.RotateTowards(shipRigid.transform.forward, -transform.Find("HoverCG").up, Mathf.Deg2Rad*2f, 10f);
+                    //                    shipRigid.transform.RotateAround(shipRigid.transform.position, -shipRigid.position, 90);
+
+                    //  shipRigid.rotation = Quaternion.LookRotation(new Vector3(flightGravAngle.x + 90f, flightGravAngle.y, flightGravAngle.z));
+                }
+                /*
+                else
+                {
+                    if (Physics.Raycast(shipRigid.position, -this.gameObject.transform.up, out groundHit, 100f))
+                    {
+                        Vector3 flightGravAngle = Vector3.RotateTowards(shipRigid.transform.up, groundHit.point, 2 * Mathf.PI, 0);
+                        shipRigid.AddForce(flightGravAngle * -1f * shipRigid.mass * Physics.gravity.magnitude);
+                    }
+
+                }
+
+                shipRigid.transform.Find("HoverCG").LookAt(groundHit.point);
+                */
+                #endregion
+            }
+            ++thrustercount;
         }
-        else {
-            //ShipStabilizer();
-        }
-        
+
+        //do gravity
+        //Vector3 forceangle = new Vector3(groundHit.normal.x, groundHit.normal.y, groundHit.normal.z);
+        //shipRigid.AddForce(forceangle * -1f * shipRigid.mass * Physics.gravity.magnitude);
+        //        Debug.DrawRay(shipRigid.transform.Find("HoverCG").position, groundHit.normal * -1f * shipRigid.mass * Physics.gravity.y, Color.blue);
+        //        Debug.DrawRay(shipRigid.transform.Find("HoverCG").position, shipRigid.velocity * -1f * shipRigid.mass * Physics.gravity.y, Color.green);
+        //        Debug.DrawRay(shipRigid.transform.Find("HoverCG").position, forceangle.normalized * -1f * shipRigid.mass * Physics.gravity.y, Color.red);
+        //        Debug.DrawRay(shipRigid.transform.Find("HoverCG").position, groundHit.normal.eulerAngles.normalized * -1f * shipRigid.mass * Physics.gravity.y, Color.black);
+        #endregion
     }
 
     void Lance()
