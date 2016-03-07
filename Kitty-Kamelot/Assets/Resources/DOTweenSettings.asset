@@ -17,13 +17,13 @@ MonoBehaviour:
   showUnityEditorReport: 0
   logBehaviour: 2
   drawGizmos: 1
-  defaultRecyclable: 0
+  defaultRecyclable: 1
   defaultAutoPlay: 3
   defaultUpdateType: 0
   defaultTimeScaleIndependent: 0
-  defaultEaseType: 9
-  defaultEaseOvershootOrAmplitude: 1.70158
-  defaultEasePeriod: 0
+  defaultEaseType: 31
+  defaultEaseOvershootOrAmplitude: 6.86
+  defaultEasePeriod: 3.82
   defaultAutoKill: 1
   defaultLoopType: 0
   storeSettingsLocation: 0

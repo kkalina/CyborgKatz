@@ -5,14 +5,29 @@ using DG.Tweening;
 
 public class Wiggle : MonoBehaviour {
 
+    Rigidbody rigid;
+
 	// Use this for initialization
 	void Start () {
-        transform.DOScaleY(.5f, 5f);
+        rigid = gameObject.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.DOScaleY(.5f, 10f);
+
+    }
+
+    void OnCollisionEnter(Collision coll) {
+        transform.DOScale(rigid.velocity.normalized + new Vector3(.5f, .5f, .5f), .1f);
+        StartCoroutine(revert());
+    }
+    void OnCollisionExit(Collision coll)
+    {
+        
+    }
+    IEnumerator revert() {
+        yield return new WaitForSeconds(.1f);
+        transform.DOScale(new Vector3(1f,1f,1f), .1f);
 
     }
 }

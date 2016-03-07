@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Gun : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
