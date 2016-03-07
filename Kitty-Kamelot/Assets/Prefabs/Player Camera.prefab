@@ -169,7 +169,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -300,7 +300,7 @@ MonoBehaviour:
   camTarget: {fileID: 0}
   distance: 8
   height: 2
-  u: 0.4
+  u: 0.9
   shake: 0
   shakeIntensity: 0.1
 --- !u!114 &11473950
@@ -458,6 +458,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: u
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

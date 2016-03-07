@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Ben's_Bungalow.unity
+- path: Assets/Scenes/Black_Hole_Zone.unity
   isLoaded: 1
   isActive: 1

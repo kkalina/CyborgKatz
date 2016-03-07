@@ -7,6 +7,8 @@ public class ShipControl : MonoBehaviour
     public AudioSource timeSlow;
     public AudioSource timeResume;
 
+    public GameObject bullet;
+
     public int health = 6;
     public bool dead = false;
     public GameObject debris;
@@ -40,6 +42,9 @@ public class ShipControl : MonoBehaviour
     public float turnSpeed = 25f;
     public float curCharge = 15f;
     public float jumpForce = 50f;
+    public bool grounded = false;
+
+    public GravityEngine gravEngine;
 
     public float hoverHeight = 0.7f;
     public float hoverForce = 3f;
@@ -59,6 +64,7 @@ public class ShipControl : MonoBehaviour
     private Transform[] hoverSensors;
 
     private Vector3 moveVec;
+    private float groundBufferTime = 0;
 
     public enum shipStates { normalMode, rocketMode };
     public shipStates shipState;
@@ -88,6 +94,7 @@ public class ShipControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gravEngine = this.gameObject.GetComponent<GravityEngine>();
         playerCameraObj = Instantiate(playerCameraPrefab);
         playerCamera = playerCameraObj.GetComponent<Camera>();
         playerCameraObj.GetComponent<ThirdPersonCamera>().poi = this.transform;
@@ -111,7 +118,10 @@ public class ShipControl : MonoBehaviour
         }
 
         shipRigid = this.gameObject.GetComponent<Rigidbody>();
-        
+        //Set the center of mass
+        //shipRigid.centerOfMass = new Vector3(1f, -1f, 0);
+
+
         hoverSensor1 = transform.Find("HoverSensor 1").transform;
         hoverSensor2 = transform.Find("HoverSensor 2").transform;
         hoverSensor3 = transform.Find("HoverSensor 3").transform;
@@ -120,6 +130,7 @@ public class ShipControl : MonoBehaviour
 
         lancePoint = transform.Find("Lance").transform;
         shipState = shipStates.normalMode;
+
         
         
     }
@@ -137,10 +148,20 @@ public class ShipControl : MonoBehaviour
 
         state = GamePad.GetState(playerIndexNum);
 
+        //Shooting
+        if (state.Buttons.B == ButtonState.Pressed) {
+            
+
+        }
+
         //if ( Input.GetButtonDown ("Fire3" )) {
         if ((state.Buttons.X == ButtonState.Pressed) && (shipState != shipStates.rocketMode))
         {
             shipState = shipStates.rocketMode;
+
+            //Falling sideways
+            StartCoroutine(gravEngine.tempGravChange(shipRigid.transform.forward, 1f, -40f));
+
             rocketEndTime = Time.time + rocketBoostDuration;
             Debug.Log("ROCKET MODE");
             playerCamera.gameObject.GetComponent<ThirdPersonCamera>().shake = true;
@@ -250,6 +271,7 @@ public class ShipControl : MonoBehaviour
         float v = state.Triggers.Right;
         //float h = Input.GetAxis("Horizontal");
         float h = state.ThumbSticks.Left.X;
+        float p = state.ThumbSticks.Left.Y;
         //bool rstrafe = Input.GetButton("StrafeR");
         //bool lstrafe = Input.GetButton("StrafeL");
         
@@ -295,20 +317,48 @@ public class ShipControl : MonoBehaviour
 
             //Forward Motion
             //Boost ();
-            shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity, ForceMode.Force);
-            //shipRigid.AddRelativeForce(0f, 0f, 5f * h * shipRigid.velocity.x, ForceMode.Force);
-            shipRigid.AddRelativeTorque(0f, h * turnSpeed, 0f, ForceMode.Force);
+            //Grounded propulsion
+            if (grounded == true || Time.time > groundBufferTime)
+            {
+                //gravEngine.direction = -Vector3.down; //Revert Gravity Engine
+                shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity, ForceMode.Force);
+                //shipRigid.AddRelativeForce(0f, 0f, 5f * h * shipRigid.velocity.x, ForceMode.Force);
+                shipRigid.AddRelativeTorque(0f, h * turnSpeed, 0f, ForceMode.Force);
+                //shipRigid.useGravity = false;
+                shipRigid.drag = 1.4f;
+                //Strafing
+                //if (rstrafe)
+                if (state.Buttons.RightShoulder == ButtonState.Pressed)
+                    shipRigid.AddRelativeForce(Vector3.right * 30, ForceMode.Force);
+                //else if (lstrafe)
+                if (state.Buttons.LeftShoulder == ButtonState.Pressed)
+                    shipRigid.AddRelativeForce(Vector3.left * 30, ForceMode.Force);
+            }
+            //Flight Propulsion
+            else {
+                //shipRigid.useGravity = true;
+                //gravEngine.ApplyGravity(); //Apply gravity engine
+                shipRigid.drag = .3f;
+                shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity/10f, ForceMode.Force);
+                shipRigid.AddRelativeTorque(p * turnSpeed, h * turnSpeed, 0f, ForceMode.Force);
+                //Strafing
+                //if (rstrafe)
+                if (state.Buttons.RightShoulder == ButtonState.Pressed){
+                    shipRigid.AddRelativeTorque(Vector3.back * 8, ForceMode.Force);
+                }
+                //else if (lstrafe)
+                if (state.Buttons.LeftShoulder == ButtonState.Pressed) {
+                    shipRigid.AddRelativeTorque(Vector3.forward * 8, ForceMode.Force);
+                }
+
+
+
+            }
+
+
+
 
             
-
-            //Strafing
-            //if (rstrafe)
-            if (state.Buttons.RightShoulder == ButtonState.Pressed)
-                shipRigid.AddRelativeForce(Vector3.right * 90, ForceMode.Force);
-            //else if (lstrafe)
-            if (state.Buttons.LeftShoulder == ButtonState.Pressed)
-                shipRigid.AddRelativeForce(Vector3.left * 90, ForceMode.Force);
-            //Boost ();        
             //Leaning
             //shipRigid.AddRelativeTorque(-Vector3.forward * h * leanForce, ForceMode.Force);
             //Debug.Log(shipRigid.velocity.magnitude + ", " + curCharge.ToString());
@@ -316,6 +366,9 @@ public class ShipControl : MonoBehaviour
         }
         else if (shipState == shipStates.rocketMode)
         {
+
+            
+
 
             if (playerCamera.fieldOfView < rocketFOV)
             {
@@ -365,6 +418,8 @@ public class ShipControl : MonoBehaviour
             //reg thruster check
             if (Physics.Raycast(thrustPoint.position, -this.gameObject.transform.up, out groundHit, hoverHeight))
             {
+                grounded = true;
+
                 if (state.Buttons.A == ButtonState.Pressed)
                 {
                     shipRigid.AddForce(shipRigid.transform.up * jumpForce, ForceMode.Impulse);
@@ -388,13 +443,15 @@ public class ShipControl : MonoBehaviour
                 #endregion
             }
             else {
+                grounded = false;
+                groundBufferTime = Time.time + 1f;
                 //ShipStabilizer();
             }
 
             //Gravity
-            if (thrustercount == 3)
+            if (thrustercount == 3 && shipState != shipStates.rocketMode)
             {
-                float gravStr = 9.8f;
+                //float gravStr = 9.8f;
                 Vector3 gravAng = Vector3.down;
                 //possibly cast a bunch of rays and attract you to the shortest distance
                 System.Type colType;
@@ -462,16 +519,16 @@ public class ShipControl : MonoBehaviour
                                 }
                             }
                         }
-                        gravStr = Mathf.Sqrt(Mathf.Sqrt((Mathf.Sqrt(vertdists[0]) + Mathf.Sqrt(vertdists[1]) + Mathf.Sqrt(vertdists[2])) / 3));
+                        //gravStr = Mathf.Sqrt(Mathf.Sqrt((Mathf.Sqrt(vertdists[0]) + Mathf.Sqrt(vertdists[1]) + Mathf.Sqrt(vertdists[2])) / 3));
                         gravAng = -Vector3.RotateTowards(-shipRigid.transform.up, (pointMat[0] + pointMat[1] + pointMat[2]) / 3f, Mathf.PI / 8f, .2f * shipRigid.velocity.magnitude);
-                        Physics.Raycast(shipRigid.position, gravAng, out groundHit, 30f);
+                        Physics.Raycast(shipRigid.position, gravAng, out groundHit, 20f);
                         //Debug.DrawRay(shipRigid.position, -gravAng, Color.red);
 
                         RaycastHit hov1out, hov2out, hov3out, hov4out;
-                        Physics.Raycast(hoverSensor1.position, -gravAng, out hov1out, 40f);
-                        Physics.Raycast(hoverSensor2.position, -gravAng, out hov2out, 40f);
-                        Physics.Raycast(hoverSensor3.position, -gravAng, out hov3out, 40f);
-                        Physics.Raycast(hoverSensor4.position, -gravAng, out hov4out, 40f);
+                        Physics.Raycast(hoverSensor1.position, -gravAng, out hov1out, 20f);
+                        Physics.Raycast(hoverSensor2.position, -gravAng, out hov2out, 20f);
+                        Physics.Raycast(hoverSensor3.position, -gravAng, out hov3out, 20f);
+                        Physics.Raycast(hoverSensor4.position, -gravAng, out hov4out, 20f);
                         thrusterGravs[0] = -Mathf.Pow(hov1out.distance, 2) * gravAng.normalized;
                         thrusterGravs[1] = -Mathf.Pow(hov2out.distance, 2) * gravAng.normalized;
                         thrusterGravs[2] = -Mathf.Pow(hov3out.distance, 2) * gravAng.normalized;
@@ -644,5 +701,10 @@ public class ShipControl : MonoBehaviour
         GameObject shipEXPLAD = Instantiate(shipExplosion);
         shipEXPLAD.transform.position = this.transform.position;
         Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        grounded = true;
     }
 }
