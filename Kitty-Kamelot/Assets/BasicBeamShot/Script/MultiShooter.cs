@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
+
 
 public class MultiShooter : MonoBehaviour {
 
@@ -8,12 +10,21 @@ public class MultiShooter : MonoBehaviour {
     public GameObject Wave;
 	public float Disturbance = 0;
 
+    Vector3 bottom;
+    Vector3 top;
+    Vector3 original;
+
+    bool laserActive = false;
+
 	public int ShotType = 0;
 
 	private GameObject NowShot;
 
 	void Start () {
 		NowShot = null;
+        original = transform.localEulerAngles;
+        bottom = transform.localEulerAngles + new Vector3(90f, 0f, 0f);
+        top = transform.localEulerAngles - new Vector3(45f, 0f, 0f);
 	}
 
 	void Update () {
@@ -36,7 +47,7 @@ public class MultiShooter : MonoBehaviour {
 
 
         //create GeroBeam
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && laserActive == false)
         {
             GameObject wav = (GameObject)Instantiate(Wave, this.transform.position, this.transform.rotation);
             wav.transform.Rotate(Vector3.left, 90.0f);
@@ -45,9 +56,10 @@ public class MultiShooter : MonoBehaviour {
             Bullet = Shot2;
             //Fire
             NowShot = (GameObject)Instantiate(Bullet, this.transform.position, this.transform.rotation);
+            StartCoroutine(setLaserActive(2f));
         }
             //it's Not "GetButtonDown"
-        if (Input.GetButton ("Fire2"))
+        if (laserActive == true)
 		{
 			BeamParam bp = this.GetComponent<BeamParam>();
 			if(NowShot.GetComponent<BeamParam>().bGero)
@@ -58,7 +70,7 @@ public class MultiShooter : MonoBehaviour {
 			NowShot.transform.localScale = s;
 			NowShot.GetComponent<BeamParam>().SetBeamParam(bp);
 		}
-        if (Input.GetButtonUp ("Fire2"))
+        if (laserActive == false)
 		{
 			if(NowShot != null)
 			{
@@ -66,4 +78,15 @@ public class MultiShooter : MonoBehaviour {
 			}
 		}
 	}
+
+    IEnumerator setLaserActive(float duration) {
+        laserActive = true;
+        transform.localEulerAngles = bottom;
+        Vector3 currentRotation = transform.localEulerAngles;
+        //currentRotation.x = Mathf.LerpAngle(currentRotation.x, top.x, 2f * Time.fixedDeltaTime);
+        transform.DORotate(top, 2f, RotateMode.LocalAxisAdd);
+        yield return new WaitForSeconds(duration);
+        transform.localEulerAngles = original;
+        laserActive = false;
+    }
 }

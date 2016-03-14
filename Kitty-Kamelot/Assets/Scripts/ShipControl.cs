@@ -318,8 +318,8 @@ public class ShipControl : MonoBehaviour
             //Forward Motion
             //Boost ();
             //Grounded propulsion
-            if (grounded == true || Time.time > groundBufferTime)
-            {
+            //if (grounded == true || Time.time > groundBufferTime)
+            //{
                 //gravEngine.direction = -Vector3.down; //Revert Gravity Engine
                 shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity, ForceMode.Force);
                 //shipRigid.AddRelativeForce(0f, 0f, 5f * h * shipRigid.velocity.x, ForceMode.Force);
@@ -329,13 +329,13 @@ public class ShipControl : MonoBehaviour
                 //Strafing
                 //if (rstrafe)
                 if (state.Buttons.RightShoulder == ButtonState.Pressed)
-                    shipRigid.AddRelativeForce(Vector3.right * 30, ForceMode.Force);
+                    shipRigid.AddRelativeForce(Vector3.right * 90, ForceMode.Force);
                 //else if (lstrafe)
                 if (state.Buttons.LeftShoulder == ButtonState.Pressed)
-                    shipRigid.AddRelativeForce(Vector3.left * 30, ForceMode.Force);
-            }
+                    shipRigid.AddRelativeForce(Vector3.left * 90, ForceMode.Force);
+            //}
             //Flight Propulsion
-            else {
+            /*else {
                 //shipRigid.useGravity = true;
                 gravEngine.ApplyGravity(); //Apply gravity engine
                 shipRigid.drag = .3f;
@@ -353,7 +353,7 @@ public class ShipControl : MonoBehaviour
 
 
 
-            }
+            }*/
 
 
 

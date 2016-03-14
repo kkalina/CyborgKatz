@@ -11181,10 +11181,10 @@ MonoBehaviour:
   shipVelocity: 120
   turnSpeed: 30
   curCharge: 10
-  jumpForce: 15
+  jumpForce: 5
   grounded: 0
   gravEngine: {fileID: 0}
-  hoverHeight: 1.5
+  hoverHeight: 1
   hoverForce: 33
   lanceRange: 1
   correctionSpeed: 1

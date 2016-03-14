@@ -710,7 +710,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 61.3
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
       propertyPath: m_LocalPosition.z
@@ -739,6 +739,10 @@ Prefab:
     - target: {fileID: 130232, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
       propertyPath: m_Name
       value: Hover Bike v6 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401346, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: Scale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}

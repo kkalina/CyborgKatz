@@ -14,7 +14,7 @@ public class GetUI : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		BeamParam bp = GameObject.Find("Shooter").GetComponent<BeamParam>();
 
 		//Anm
@@ -53,6 +53,6 @@ public class GetUI : MonoBehaviour {
 			CamOwner.transform.rotation = Quaternion.AngleAxis((1.0f-value) * -150.0f,Vector3.up);
 			//CamOwner.transform.localEulerAngles.Set(0,value * -150.0f,0);
 		});
-		*/
-	}
+		
+	}*/
 }
