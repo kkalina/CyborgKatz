@@ -493,60 +493,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 38576703}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &39245326
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -37.42021
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 61.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -24.684002
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.9306234
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.3659783
-      objectReference: {fileID: 0}
-    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 130232, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: m_Name
-      value: Hover Bike v6 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400486, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: gravity
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 11471296, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-      propertyPath: rocketBoostDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &43007259
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +697,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 48315580}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &49330865
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -37.42021
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 61.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -24.684002
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.9306234
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.3659783
+      objectReference: {fileID: 0}
+    - target: {fileID: 450046, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 130232, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+      propertyPath: m_Name
+      value: Hover Bike v6 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &55152704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,49 +3632,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 319197874}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &342898967 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 130232, guid: 5367ccd7c5eb8e743803cbff43ab10ab, type: 2}
-  m_PrefabInternal: {fileID: 39245326}
---- !u!120 &342898976
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 342898967}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    startWidth: 1
-    endWidth: 1
-    m_StartColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4294967295
-  m_UseWorldSpace: 1
 --- !u!1 &349178748
 GameObject:
   m_ObjectHideFlags: 0
@@ -10283,8 +10232,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 966640409}
   - 33: {fileID: 966640408}
-  - 65: {fileID: 966640407}
   - 23: {fileID: 966640406}
+  - 64: {fileID: 966640407}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Floor
@@ -10318,8 +10267,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &966640407
-BoxCollider:
+--- !u!64 &966640407
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -10328,8 +10277,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &966640408
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -25520,6 +25469,10 @@ Prefab:
       propertyPath: m_Name
       value: tubetest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: d6ee162d9ed3a4d459e155831f70a60c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3255adc6fa1d2c446a256a2e0033dcc5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6ee162d9ed3a4d459e155831f70a60c, type: 3}
   m_IsPrefabParent: 0

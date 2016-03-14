@@ -160,7 +160,7 @@ public class ShipControl : MonoBehaviour
             shipState = shipStates.rocketMode;
 
             //Falling sideways
-            StartCoroutine(gravEngine.tempGravChange(shipRigid.transform.forward, 1f, -40f));
+            //StartCoroutine(gravEngine.tempGravChange(shipRigid.transform.forward, 1f, -40f));
 
             rocketEndTime = Time.time + rocketBoostDuration;
             Debug.Log("ROCKET MODE");
@@ -337,7 +337,7 @@ public class ShipControl : MonoBehaviour
             //Flight Propulsion
             else {
                 //shipRigid.useGravity = true;
-                //gravEngine.ApplyGravity(); //Apply gravity engine
+                gravEngine.ApplyGravity(); //Apply gravity engine
                 shipRigid.drag = .3f;
                 shipRigid.AddRelativeForce(Vector3.forward * v * shipVelocity/10f, ForceMode.Force);
                 shipRigid.AddRelativeTorque(p * turnSpeed, h * turnSpeed, 0f, ForceMode.Force);

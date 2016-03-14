@@ -13,6 +13,6 @@ public class MouseTgt : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Vector3 dir= ray.direction.normalized;
 
-		transform.LookAt(transform.position+dir*16.0f);
+		//transform.LookAt(transform.position+dir*16.0f);
 	}
 }

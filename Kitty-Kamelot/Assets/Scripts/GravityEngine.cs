@@ -26,7 +26,7 @@ public class GravityEngine : MonoBehaviour {
 
     public void ApplyGravity()
     {
-        rigid.velocity += direction * gravity * Time.fixedDeltaTime;
+        //rigid.velocity += direction * gravity * Time.fixedDeltaTime;
     }
 
     public IEnumerator tempGravChange(Vector3 dir, float duration, float magnitude)

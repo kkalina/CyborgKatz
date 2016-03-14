@@ -82,11 +82,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
 
 
-        if (shake) {
+        /*if (shake) {
 			pos2.x += Random.value * shakeIntensity * Random .Range(-1, 1);
 			pos2.y += Random.value * shakeIntensity * Random .Range(-1, 1);
 			pos2.z += Random.value * shakeIntensity * Random .Range(-1, 1);
-		}
+		}*/
 
         
 		transform.position = pos2;
